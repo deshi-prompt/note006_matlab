@@ -1,0 +1,193 @@
+\documentclass[a4paper,11pt,oneside,openany]{jsbook}
+%\documentclass[b5paper,10pt,oneside,openany]{jsbook}
+%\documentclass[a4paper,10pt,oneside,openany]{jsbook}
+%
+\usepackage[dvipdfmx]{graphicx}
+\usepackage{amsmath,amssymb}
+\usepackage{bm}
+\usepackage{graphicx}	
+\usepackage{ascmac}
+\usepackage{makeidx}
+\usepackage{hyperref}
+\usepackage{layout}
+\usepackage{fancyhdr}
+\usepackage{caption}
+\usepackage{here}
+\usepackage{url}
+\usepackage{layout}
+
+%\special{pdf:pagesize width 210mm height 297mm}
+
+%
+\providecommand{\tightlist}{\setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+%
+%図の前のコロンを削除%%%%%%%%
+\makeatletter
+\long\def\@makecaption#1#2{%
+\vskip\abovecaptionskip
+\iftdir\sbox\@tempboxa{#1\hskip1zw#2}%
+\else\sbox\@tempboxa{#1 #2}%
+\fi
+\ifdim \wd\@tempboxa >\hsize
+\iftdir #1\hskip1zw#2\relax\par
+\else #1 #2\relax\par\fi
+\else
+\global \@minipagefalse
+\hbox to\hsize{\hfil\box\@tempboxa\hfil}%
+\fi
+\vskip\belowcaptionskip}
+
+% 図を強制的に指示した位置に入れる
+\usepackage{here}
+\renewcommand{\figurename}{Fig.}
+
+%section書式設定%%%%%%%%
+\renewcommand{\section}{\@startsection{section}{1}{\z@}%
+   {0.5\Cvs \@plus0\Cvs \@minus 0.2\Cvs}% % section上部の空白量
+   {0\Cvs \@plus0\Cvs \@minus 0.2\Cvs}%   % section下部の空白量
+   {\reset@font\Large\bfseries}}          % フォント，フォントサイズを変更
+\renewcommand{\subsection}{\@startsection{subsection}{2}{\z@}%
+   {0.5\Cvs \@plus0\Cvs \@minus 0.2\Cvs}% 
+   {0\Cvs \@plus0\Cvs \@minus 0.2\Cvs}%
+   {\reset@font\large\bfseries}}
+\renewcommand{\subsubsection}{\@startsection{subsubsection}{3}{\z@}%
+   {0.5\Cvs \@plus0\Cvs \@minus 0.2\Cvs}% 
+   {0\Cvs \@plus0\Cvs \@minus 0.2\Cvs}%
+   {\reset@font\normalsize\bfseries}}
+\makeatother
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+\makeindex
+%レイアウト設定%%%%%%%%%%%%%%%%%%%%%%%%%%
+\pagestyle{fancy}
+\fancyhead{}
+\fancyhead[LO]{\leftmark}
+\fancyhead[RO]{\rightmark}
+\renewcommand{\chaptermark}[1]{\markboth{第\ \thechapter\ 章~#1}{}}
+\renewcommand{\sectionmark}[1]{\markright{\thesection #1}{}}
+
+\cfoot{\thepage}
+
+\renewcommand{\footrulewidth}{0.4pt}
+%
+\setlength{\textwidth}{389pt}
+\setlength{\headwidth}{389pt}
+\setlength{\textheight}{35.5\baselineskip}
+\setlength{\footskip}{35pt}
+\addtolength{\textheight}{\topskip}
+\setlength{\voffset}{-0.65in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\title{{\Huge \textbf{でしぷろノート Vol.06}}\\ {Matlab/SimulinkとArduinoでモータ回転数制御}}
+\author{でし・ぷろんぷと\\ \texttt{http://deshi-prompt.github.io/}}
+\date{Deshi Prompt 2018.8.10}
+\begin{document}
+
+\parindent = 0pt % 字下げしない
+
+%------------------------------------------------------------------
+% 表紙
+\begin{titlepage}
+    %\maketitle % 表紙の作成
+    \begin{figure}[htbp]
+        \centering
+        \includegraphics[width=350pt]{fig/title.png}
+    \end{figure}
+    \thispagestyle{empty}
+\end{titlepage}
+
+%------------------------------------------------------------------
+%\thispagestyle{empty}
+%\newpage　
+
+%------------------------------------------------------------------
+\frontmatter % 序文の開始
+\setcounter{tocdepth}{1} %表示させる階層の深さを変更する 1:\sectionまで
+\tableofcontents %目次作成
+\thispagestyle{empty} 
+%------------------------------------------------------------------
+\mainmatter % 本文の開始
+
+
+\setlength{\parskip}{1.5ex plus 0ex minus 0.2ex}
+
+\chapter{はじめに}
+\thispagestyle{fancy}
+\input{./output/01.tex}
+
+\chapter{Matlab/SimulinkとArduinoでモータを動かそう}
+\thispagestyle{fancy}
+\input{./output/02.tex}
+
+\chapter{Matlab/SimulinkとArduinoでモータ回転数を計測しよう}
+\thispagestyle{fancy}
+\input{./output/03.tex}
+
+\chapter{Matlab/SimulinkとArduinoでモータ回転数制御をしよう}
+\thispagestyle{fancy}
+\input{./output/04.tex}
+
+%------------------------------------------------------------------
+%参考文献
+\begin{thebibliography}{20}
+\bibitem{kawasaki_public_HP}かわさきロボット競技大会 公式HP\\
+  \url{http://www.kawasaki-net.ne.jp/robo/}
+\bibitem{MathWorks_HP}MathWorks ストア\\
+  \url{https://jp.mathworks.com/store/link/products/}
+\bibitem{Simulink_examples}Simulink Support Package for Arduino Hardware Examples\\
+  \url{http://jp.mathworks.com/help/supportpkg/arduino/examples.html}
+\bibitem{Win_SDK1}Windows SDK 7.1のインストール時のはまりポイント\\
+  \url{http://d.hatena.ne.jp/kfujieda/20140827/1409137229}
+\bibitem{Win_SDK2}How can I install sdk 7.1 on windows 10 ???\\
+  \url{https://jp.mathworks.com/matlabcentral/answers/}\\
+    233850-how-can-i-install-sdk-7-1-on-windows-10/
+\bibitem{switch-science_HP}スイッチサイエンス\\
+  \url{https://www.switch-science.com/}
+\bibitem{pololu_HP_driver}Pololu HP モータドライバ VNH5019\\
+  \url{https://www.pololu.com/product/1451}
+\bibitem{pololu_HP_encoder}Pololu HP 磁気式エンコーダ\\
+  \url{https://www.pololu.com/product/3081}
+\bibitem{wiki_PID}ウィキペディア PID制御\\
+  \url{https://ja.wikipedia.org/wiki/PID制御}
+\bibitem{MathWors_RC_receive}Using an RC Controller with Arduino and Simulink\\
+  \url{https://jp.mathworks.com/videos/}\\
+    using-an-rc-controller-with-arduino-and-simulink-91738.html
+\bibitem{MathWors_I2C}ADLX345 i2c Driver for Arduino Mega\\
+  \url{https://jp.mathworks.com/matlabcentral/}\\
+    fileexchange/41027-adlx345-i2c-driver-for-arduino-mega/
+\end{thebibliography}
+\thispagestyle{empty} 　
+%------------------------------------------------------------------
+%\appendix % 付録
+
+%------------------------------------------------------------------
+\backmatter % 後書きの開始
+\chapter{奥付}
+\thispagestyle{empty} 
+
+\section*{発行}
+でし・ぷろんぷと　\\
+2018年8月10日 初版第1刷発行
+
+\section*{著者}
+santny
+
+\section*{フォロー}
+takarakasai \\
+kyo46
+
+\section*{印刷}
+製本直送.com
+
+\section*{Web} 
+http://deshi-prompt.github.io/
+
+\section*{Mail}
+ada.robo1@gmail.com
+
+
+%\newpage　
+%\pagestyle{empty}
+%\printindex
+%
+%
+\end{document}
