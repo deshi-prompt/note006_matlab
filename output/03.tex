@@ -47,6 +47,11 @@ Simulinkモデルは、Fig.\ref{fig303}の通りです。
 Fig.\ref{fig308}～Fig.\ref{fig310}に示すプログラムを書き込んで、
 "ビルド"を押すことでコンパイルができます。
 
+プログラムは”離散状態の更新”でエンコーダに接続した割込みピンの設定を行い、
+”インクルード”で呼び出し関数の定義を行い、
+”出力”でプログラムをループさせ、
+エンコーダ回転数[RPM]をS-Function Builder ブロックから出力させます。
+
 \begin{figure}[htbp]
     \centering
     \includegraphics[width=380pt]{fig/fig303.eps}
@@ -84,21 +89,21 @@ Fig.\ref{fig308}～Fig.\ref{fig310}に示すプログラムを書き込んで、
 
 \begin{figure}[htbp]
     \centering
-    \includegraphics[width=389pt]{fig/fig308.eps}
+    \includegraphics[width=300pt]{fig/fig308.eps}
     \caption{S-Function Builder ライブラリ インクルード}
     \label{fig308}
 \end{figure}   
 
 \begin{figure}[htbp]
     \centering
-    \includegraphics[width=300pt]{fig/fig309.eps}
+    \includegraphics[width=320pt]{fig/fig309.eps}
     \caption{S-Function Builder 出力}
     \label{fig309}
 \end{figure}  
 
 \begin{figure}[htbp]
     \centering
-    \includegraphics[width=300pt]{fig/fig310.eps}
+    \includegraphics[width=320pt]{fig/fig310.eps}
     \caption{S-Function Builder 離散状態の更新}
     \label{fig310}
 \end{figure}  
